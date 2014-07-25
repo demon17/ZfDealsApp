@@ -18,4 +18,19 @@ class Module
             ),
         );
     }
+
+    // use layout admin when call AdminController
+    public function init(\Zend\ModuleManager\ModuleManager $moduleManager)
+    {
+        $sharedEvents = $moduleManager->getEventManager()->getSharedManager();
+        $sharedEvents->attach(
+            'ZfDeals\Controller\AdminController',
+            'dispatch',
+            function($e) {
+                $controller = $e->getTarget();
+                $controller->layout('zf-deals/layout/admin');
+            },
+            100
+        );
+    }
 }

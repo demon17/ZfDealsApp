@@ -8,7 +8,6 @@
 return array(
     'modules' => array(
         'Application',
-        'ZFTool',
         'ZfDeals'
     ),
     'module_listener_options' => array(
