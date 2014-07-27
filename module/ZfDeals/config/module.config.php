@@ -3,6 +3,7 @@ return array(
     // admin path
     'router' => array(
         'routes' => array(
+            // admin routes
             'zf-deals\admin\home' => array(
                 'type'    => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
@@ -10,6 +11,17 @@ return array(
                     'defaults' => array(
                         'controller' => 'ZfDeals\Controller\Admin',
                         'action'     => 'index',
+                    ),
+                ),
+            ),
+            // add product routes
+            'zf-deals\admin\product\add' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/deals/admin/product/add',
+                    'defaults' => array(
+                        'controller' => 'ZfDeals\Controller\Admin',
+                        'action'     => 'add-product',
                     ),
                 ),
             ),
