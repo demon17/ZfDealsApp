@@ -11,36 +11,42 @@ class ProductFieldset extends Fieldset implements InputFilterProviderInterface
     {
         parent::__construct('product');
 
-        $this->add(array(
-            'name' => 'id',
-            'attributes' => array(
-                'type'  => 'text',
-            ),
-            'options' => array(
-                'label' => 'ID товара:',
+        $this->add(
+            array(
+                'name' => 'id',
+                'attributes' => array(
+                    'type'  => 'text',
+                ),
+                'options' => array(
+                    'label' => 'ID товара:',
+                )
             )
-        ));
+        );
 
 
-        $this->add(array(
-            'name' => 'name',
-            'attributes' => array(
-                'type'  => 'text',
-            ),
-            'options' => array(
-                'label' => 'Название товара:',
+        $this->add(
+            array(
+                'name' => 'name',
+                'attributes' => array(
+                    'type'  => 'text',
+                ),
+                'options' => array(
+                    'label' => 'Название товара:',
+                )
             )
-        ));
+        );
 
-        $this->add(array(
-            'name' => 'stock',
-            'attributes' => array(
-                'type'  => 'number',
-            ),
-            'options' => array(
-                'label' => '# Количество:'
-            ),
-        ));
+        $this->add(
+            array(
+                'name' => 'stock',
+                'attributes' => array(
+                    'type'  => 'number',
+                ),
+                'options' => array(
+                    'label' => '# Количество:'
+                ),
+            )
+        );
     }
 
     public function getInputFilterSpecification()

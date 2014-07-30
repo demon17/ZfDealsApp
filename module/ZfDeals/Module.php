@@ -5,13 +5,40 @@ use Zend\ModuleManager\ModuleManager;
 
 class Module
 {
-    public function init(ModuleManager $moduleManager)
+    public function init(\Zend\ModuleManager\ModuleManager $moduleManager)
+    {
+        $this->configureLayoutForController(
+            $moduleManager,
+            'ZfDeals\Controller\ProductAddFormController',
+            'zf-deals/layout/admin'
+        );
+
+        $this->configureLayoutForController(
+            $moduleManager,
+            'ZfDeals\Controller\DealAddFormController',
+            'zf-deals/layout/admin'
+        );
+
+        $this->configureLayoutForController(
+            $moduleManager,
+            'ZfDeals\Controller\IndexController',
+            'zf-deals/layout/site'
+        );
+    }
+
+    private function configureLayoutForController($moduleManager, $controller, $layout)
     {
         $sharedEvents = $moduleManager->getEventManager()->getSharedManager();
-        $sharedEvents->attach('ZfDeals\Controller\AdminController', 'dispatch', function($e) {
-            $controller = $e->getTarget();
-            $controller->layout('zf-deals/layout/admin');
-        }, 100);
+
+        $sharedEvents->attach(
+            $controller,
+            'dispatch',
+            function ($e) use ($layout) {
+                $controller = $e->getTarget();
+                $controller->layout($layout);
+            },
+            100
+        );
     }
 
     public function getConfig()
