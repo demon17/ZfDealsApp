@@ -27,7 +27,7 @@ class DealAdd extends Form
                 'name' => 'submit',
                 'attributes' => array(
                     'type'  => 'submit',
-                    'value' => 'Добавить'
+                    'value' => 'Добавить акцию'
                 ),
             )
         );

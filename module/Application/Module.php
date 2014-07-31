@@ -14,8 +14,12 @@ use Zend\Mvc\MvcEvent;
 
 class Module
 {
-    public function onBootstrap(MvcEvent $e)
+    public function onBootstrap($e)
     {
+        \Zend\Validator\AbstractValidator::setDefaultTranslator(
+            $e->getApplication()->getServiceManager()->get('translator')
+        );
+
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);

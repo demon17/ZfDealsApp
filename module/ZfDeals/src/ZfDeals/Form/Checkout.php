@@ -3,17 +3,17 @@ namespace ZfDeals\Form;
 
 use Zend\Form\Form;
 
-class ProductAdd extends Form
+class Checkout extends Form
 {
     public function __construct()
     {
         parent::__construct('login');
-        $this->setAttribute('action', '/deals/admin/product/add');
+        $this->setAttribute('action', '/deals/checkout');
         $this->setAttribute('method', 'post');
 
         $this->add(
             array(
-                'type' => 'ZfDeals\Form\ProductFieldset',
+                'type' => 'ZfDeals\Form\OrderFieldset',
                 'options' => array(
                     'use_as_base_fieldset' => true
                 )
@@ -25,7 +25,7 @@ class ProductAdd extends Form
                 'name' => 'submit',
                 'attributes' => array(
                     'type'  => 'submit',
-                    'value' => 'Добавить товар'
+                    'value' => 'Разместить заказ'
                 ),
             )
         );

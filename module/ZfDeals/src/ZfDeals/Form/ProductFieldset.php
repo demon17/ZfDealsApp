@@ -13,10 +13,8 @@ class ProductFieldset extends Fieldset implements InputFilterProviderInterface
 
         $this->add(
             array(
-                'name' => 'id',
-                'attributes' => array(
-                    'type'  => 'text',
-                ),
+                'name' => 'productId',
+                'type' => 'Zend\Form\Element\Text',
                 'options' => array(
                     'label' => 'ID товара:',
                 )
@@ -27,9 +25,7 @@ class ProductFieldset extends Fieldset implements InputFilterProviderInterface
         $this->add(
             array(
                 'name' => 'name',
-                'attributes' => array(
-                    'type'  => 'text',
-                ),
+                'type' => 'Zend\Form\Element\Text',
                 'options' => array(
                     'label' => 'Название товара:',
                 )
@@ -39,11 +35,13 @@ class ProductFieldset extends Fieldset implements InputFilterProviderInterface
         $this->add(
             array(
                 'name' => 'stock',
+                'type' => 'Zend\Form\Element\Number',
                 'attributes' => array(
-                    'type'  => 'number',
+                    'step' => 1,
+                    'min' => 0
                 ),
                 'options' => array(
-                    'label' => '# Количество:'
+                    'label' => 'Количество:'
                 ),
             )
         );
@@ -52,67 +50,22 @@ class ProductFieldset extends Fieldset implements InputFilterProviderInterface
     public function getInputFilterSpecification()
     {
         return array(
-            'id' => array (
-                'required'   => true,
+            'productId' => array (
+                'required' => true,
                 'filters' => array(
                     array(
                        'name' => 'StringTrim'
                     )
                 ),
-                'validators' => array(
-                    array(
-                        'name' => 'NotEmpty',
-                        'options' => array(
-                            'message'  => "Пожалуйста, введите ID продукта."
-                        ),
-                    )
-                )
             ),
             'name' => array (
-                'required'   => true,
+                'required' => true,
                 'filters' => array(
                     array(
                        'name' => 'StringTrim'
                     )
                 ),
-                'validators' => array(
-                    array(
-                        'name' => 'NotEmpty',
-                        'options' => array(
-                            'message'  => "Пожалуйста, введите название продукта."
-                        ),
-                    )
-                )
-            ),
-            'stock' => array (
-                'required'   => true,
-                'filters' => array(
-                    array(
-                       'name' => 'StringTrim'
-                    )
-                ),
-                'validators' => array(
-                    array(
-                        'name' => 'NotEmpty',
-                        'options' => array(
-                            'message'  => "Пожалуйста, укажите количество."
-                        ),
-                    ),
-                    array(
-                        'name' => 'Digits',
-                        'options' => array(
-                            'message'  => "Пожалуйста, введите целое число."
-                        ),
-                    ),
-                    array(
-                        'name' => 'GreaterThan',
-                        'options' => array(
-                            'min' => 0,
-                            'message'  => "Пожалуйста, введите значение >= 0."
-                        ),
-                    )
-                )
-            ),
+            )
         );
     }
 }

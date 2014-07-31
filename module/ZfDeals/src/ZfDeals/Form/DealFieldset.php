@@ -3,9 +3,8 @@ namespace ZfDeals\Form;
 
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterInterface;
-use Zend\InputFilter\InputFilterProviderInterface;
 
-class DealFieldset extends Fieldset implements InputFilterProviderInterface
+class DealFieldset extends Fieldset
 {
     public function __construct()
     {
@@ -26,7 +25,7 @@ class DealFieldset extends Fieldset implements InputFilterProviderInterface
                     'step' => 'any'
                 ),
                 'options' => array(
-                    'label' => 'Цена:',
+                    'label' => 'Цена',
                 )
             )
         );
@@ -36,7 +35,7 @@ class DealFieldset extends Fieldset implements InputFilterProviderInterface
                 'name' => 'startDate',
                 'type' => 'Zend\Form\Element\Date',
                 'options' => array(
-                    'label' => 'Дата начала:'
+                    'label' => 'Дата начала'
                 ),
             )
         );
@@ -46,63 +45,9 @@ class DealFieldset extends Fieldset implements InputFilterProviderInterface
                 'name' => 'endDate',
                 'type' => 'Zend\Form\Element\Date',
                 'options' => array(
-                    'label' => 'Дата окончания:'
+                    'label' => 'Дата окончания'
                 ),
             )
-        );
-    }
-
-    public function getInputFilterSpecification()
-    {
-        return array(
-            'price' => array(
-                'required' => true,
-                'filters' => array(
-                    array(
-                       'name' => 'StringTrim'
-                    )
-                ),
-                'validators' => array(
-                    array(
-                        'name' => 'NotEmpty',
-                        'options' => array(
-                            'message'  => "Пожалуйста, введите число."
-                        ),
-                    )
-                )
-            ),
-            'startDate' => array (
-                'required'   => true,
-                'filters' => array(
-                    array(
-                       'name' => 'StringTrim'
-                    )
-                ),
-                'validators' => array(
-                    array(
-                        'name' => 'Date',
-                        'options' => array(
-                            'message'  => "Пожалуйста, введите число."
-                        ),
-                    ),
-                )
-            ),
-            'endDate' => array (
-                'required'   => true,
-                'filters' => array(
-                    array(
-                       'name' => 'StringTrim'
-                    )
-                ),
-                'validators' => array(
-                    array(
-                        'name' => 'Date',
-                        'options' => array(
-                            'message'  => "Пожалуйста, введите число."
-                        ),
-                    ),
-                )
-            ),
         );
     }
 }
