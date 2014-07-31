@@ -1,3 +1,9 @@
 [submodule "vendor/ZF2"]
 	path = vendor/ZF2
 	url = https://github.com/zendframework/zf2.git
+[submodule "ZfDeals"]
+	path = ZfDeals
+	url = https://github.com/demon17/ZfDeals.git
+[submodule "module/ZfDeals"]
+	path = module/ZfDeals
+	url = https://github.com/demon17/ZfDeals
